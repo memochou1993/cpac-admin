@@ -7,9 +7,16 @@ use App\Http\Controllers\Controller;
 
 class GroupController extends Controller
 {
-    public function index(Group $group)
+    protected $group;
+
+    public function __construct(Group $group)
     {
-        $groups = $group->all();
+        $this->group = $group;
+    }
+
+    public function index()
+    {
+        $groups = $this->group->get();
 
         return response([
             'data' => [
