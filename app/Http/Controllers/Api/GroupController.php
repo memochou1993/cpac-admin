@@ -16,7 +16,7 @@ class GroupController extends Controller
 
     public function index()
     {
-        $groups = $this->group->get();
+        $groups = $this->group->pluck('name')->all();
 
         return response([
             'data' => [

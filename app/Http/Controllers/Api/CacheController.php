@@ -11,7 +11,9 @@ class CacheController extends Controller
     public function destroy()
     {
         if (Cache::flush()) {
-            return response(null, 204);
+            return response([
+                //
+            ], 204);
         }
     }
 }
