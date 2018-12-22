@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/groups', 'GroupController@index');
 Route::get('/albums/{group}', 'AlbumController@index');
 Route::get('/photos/{group}/{album}', 'PhotoController@index');
+
+Route::get('/caches/destroy', 'CacheController@destroy');
