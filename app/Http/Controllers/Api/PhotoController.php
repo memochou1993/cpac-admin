@@ -18,9 +18,7 @@ class PhotoController extends Controller
         }
 
         return response([
-            'data' => [
-                Cache::get($resource),
-            ],
+            'data' => Cache::get($resource),
         ], 200);
     }
 }

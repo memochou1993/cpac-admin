@@ -19,9 +19,7 @@ class GroupController extends Controller
         $groups = $this->group->pluck('name')->all();
 
         return response([
-            'data' => [
-                $groups,
-            ],
+            'data' => $groups,
         ], 200);
     }
 }
