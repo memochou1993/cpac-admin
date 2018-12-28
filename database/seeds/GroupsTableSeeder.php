@@ -18,7 +18,7 @@ class GroupsTableSeeder extends Seeder
 
         for ($i = 1; $i <= config('factories.group.number'); $i++) {
             $groups[] = [
-                'name' => '第' . $i . '屆',
+                'name' => '第 ' . $i . ' 屆',
             ];
         }
 
