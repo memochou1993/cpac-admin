@@ -18,7 +18,17 @@ class AlbumController extends Controller
         $minutes = config('default.cache.minutes.albums');
 
         $albums = Cache::remember($resource, $minutes, function () use ($resource) {
-            return array_map('basename', Storage::directories($resource));
+            $directories = array_map('basename', Storage::directories($resource));
+
+            $explode = function($self) {
+                $array = explode(' ', $self);
+                return [
+                    'date' => $array[0],
+                    'name' => $array[1],
+                ];
+            };
+
+            return array_map($explode, $directories);
         });
 
         return response([
