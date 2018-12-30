@@ -21,10 +21,11 @@ class AlbumController extends Controller
             $directories = array_map('basename', Storage::directories($resource));
 
             $explode = function($self) {
-                $array = explode(' ', $self);
+                $array = explode('_', $self);
                 return [
                     'date' => $array[0],
-                    'name' => $array[1],
+                    'title' => $array[1],
+                    'subheading' => $array[2] ?? null,
                 ];
             };
 
