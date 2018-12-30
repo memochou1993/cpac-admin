@@ -17,7 +17,9 @@ class GroupController extends Controller
 
     public function index()
     {
-        $resource = 'groups';
+        $resource = implode('/', [
+            'groups',
+        ]);
 
         $minutes = config('default.cache.minutes.groups');
 
