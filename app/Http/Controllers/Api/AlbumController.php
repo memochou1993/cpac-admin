@@ -10,17 +10,15 @@ class AlbumController extends Controller
 {
     public function index($category)
     {
-        $resource = 'albums';
-
-        $minutes = config('default.cache.minutes.albums');
-
-        $path = implode('/', [
+        $resource = implode('/', [
             'images',
             $category,
         ]);
 
-        $albums = Cache::remember($resource, $minutes, function () use ($path) {
-            return array_map('basename', Storage::directories($path));
+        $minutes = config('default.cache.minutes.albums');
+
+        $albums = Cache::remember($resource, $minutes, function () use ($resource) {
+            return array_map('basename', Storage::directories($resource));
         });
 
         return response([

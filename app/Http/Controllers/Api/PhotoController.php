@@ -10,18 +10,16 @@ class PhotoController extends Controller
 {
     public function index($category, $album)
     {
-        $resource = 'photos';
-
-        $minutes = config('default.cache.minutes.photos');
-
-        $path = implode('/', [
+        $resource = implode('/', [
             'images',
             $category,
             $album,
         ]);
 
-        $photos = Cache::remember($resource, $minutes, function () use ($path) {
-            return array_map('basename', Storage::files($path));
+        $minutes = config('default.cache.minutes.photos');
+
+        $photos = Cache::remember($resource, $minutes, function () use ($resource) {
+            return array_map('basename', Storage::files($resource));
         });
 
         return response([
