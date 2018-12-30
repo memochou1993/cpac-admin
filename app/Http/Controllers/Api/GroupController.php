@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Cache;
 use App\Group;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,13 @@ class GroupController extends Controller
 
     public function index()
     {
-        $groups = $this->group->pluck('name')->all();
+        $resource = 'groups';
+
+        $minutes = config('default.cache.minutes.groups');
+
+        $groups = Cache::remember($resource, $minutes, function () {
+            return $this->group->pluck('name')->all();
+        });
 
         return response([
             'data' => $groups,

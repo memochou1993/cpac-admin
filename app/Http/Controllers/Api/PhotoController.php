@@ -8,17 +8,24 @@ use App\Http\Controllers\Controller;
 
 class PhotoController extends Controller
 {
-    public function index($group, $album)
+    public function index($category, $album)
     {
-        $resource = 'photos/' . $group . '/' . $album;
+        $resource = 'photos';
 
-        if (! Cache::get($resource)) {
-            $photos = array_map('basename', Storage::files($resource));
-            Cache::forever($resource, $photos);
-        }
+        $minutes = config('default.cache.minutes.photos');
+
+        $path = implode('/', [
+            'images',
+            $category,
+            $album,
+        ]);
+
+        $photos = Cache::remember($resource, $minutes, function () use ($path) {
+            return array_map('basename', Storage::files($path));
+        });
 
         return response([
-            'data' => Cache::get($resource),
+            'data' => $photos,
         ], 200);
     }
 }
