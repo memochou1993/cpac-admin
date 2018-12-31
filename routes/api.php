@@ -23,19 +23,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/groups', 'GroupController@index');
 
 /**
- * Album
+ * Gallery
  */
-Route::get('/albums/{category}', 'AlbumController@index');
-
-/**
- * Photo
- */
-Route::get('/photos/{category}/{album}', 'PhotoController@index');
-
-/**
- * Event
- */
-Route::get('/events', 'EventController@index');
+Route::get('/gallery/categories', 'Gallery\CategoryController@index');
+Route::get('/gallery/albums/{category}', 'Gallery\AlbumController@index');
+Route::get('/gallery/photos/{category}/{album}', 'Gallery\PhotoController@index');
 
 /**
  * Cache
