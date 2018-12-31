@@ -25,7 +25,7 @@ class AlbumController extends Controller
                 return [
                     'date' => $array[0],
                     'title' => $array[1],
-                    'subheading' => $array[2] ?? null,
+                    'subtitle' => $array[2] ?? null,
                 ];
             };
 
