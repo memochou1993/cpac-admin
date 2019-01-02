@@ -12,6 +12,7 @@ class PhotoController extends Controller
     {
         $resource = implode('/', [
             'images',
+            'web',
             $category,
             $album,
         ]);
@@ -22,7 +23,10 @@ class PhotoController extends Controller
             $explode = function($self) {
                 return [
                     'name' => basename($self, '.jpg'),
-                    'path' => config('app.url') . '/storage/' . $self,
+                    'path' => [
+                        'web' => str_replace('images/web/', config('app.url') . '/storage/images/web/', $self),
+                        'raw' => str_replace('images/web/', config('app.url') . '/storage/images/raw/', $self),
+                    ],
                 ];
             };
 

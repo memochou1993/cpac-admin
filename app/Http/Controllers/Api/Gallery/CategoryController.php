@@ -12,6 +12,7 @@ class CategoryController extends Controller
     {
         $resource = implode('/', [
             'images',
+            'web',
         ]);
 
         $minutes = config('default.cache.minutes.categories');

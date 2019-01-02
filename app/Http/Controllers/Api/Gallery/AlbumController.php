@@ -12,6 +12,7 @@ class AlbumController extends Controller
     {
         $resource = implode('/', [
             'images',
+            'web',
             $category,
         ]);
 
