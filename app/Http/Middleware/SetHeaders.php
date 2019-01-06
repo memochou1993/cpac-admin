@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AddHeaders
+class SetHeaders
 {
     public function handle($request, Closure $next)
     {
