@@ -25,9 +25,9 @@ Route::get('/groups', 'GroupController@index');
 /**
  * Gallery
  */
-Route::get('/gallery/categories', 'Gallery\CategoryController@index');
-Route::get('/gallery/albums/{category}', 'Gallery\AlbumController@index');
-Route::get('/gallery/photos/{category}/{album}', 'Gallery\PhotoController@index');
+Route::post('/gallery/categories', 'Gallery\CategoryController@index');
+Route::post('/gallery/albums', 'Gallery\AlbumController@index');
+Route::post('/gallery/photos', 'Gallery\PhotoController@index');
 
 /**
  * Cache

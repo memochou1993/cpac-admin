@@ -4,17 +4,25 @@ namespace App\Http\Controllers\Api\Gallery;
 
 use Cache;
 use Storage;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PhotoController extends Controller
 {
-    public function index($category, $album)
+    protected $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
+    public function index()
     {
         $resource = implode('/', [
             'images',
             'web',
-            $category,
-            $album,
+            $this->request->category,
+            $this->request->album,
         ]);
 
         $minutes = config('default.cache.minutes.photos');
