@@ -26,6 +26,10 @@ class PhotoController extends Controller
 
         $path = public_path('/storage/' . $resource);
 
+        if (! file_exists($path)) {
+            abort(404);
+        }
+
         return $this->request->download ? response()->download($path) : response()->file($path);
     }
 }
