@@ -29,11 +29,20 @@ class PhotoController extends Controller
 
         $photos = Cache::remember($resource, $minutes, function () use ($resource) {
             $explode = function($self) {
+                $array = explode('/', str_replace('images/web/', '', $self));
+
+                $params = config('app.url') . '/gallery/photos?' . http_build_query([
+                    'category' => $array[0],
+                    'album' => $array[1],
+                    'photo' => $array[2],
+                ]);
+
                 return [
                     'name' => basename($self, '.jpg'),
                     'path' => [
-                        'web' => str_replace('images/web/', config('app.url') . '/storage/images/web/', $self),
-                        'raw' => str_replace('images/web/', config('app.url') . '/storage/images/raw/', $self),
+                        'web' => $params . '&size=web',
+                        'raw' => $params . '&size=raw',
+                        'download' => $params . '&size=raw&download=true',
                     ],
                 ];
             };

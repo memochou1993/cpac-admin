@@ -31,6 +31,7 @@ class AlbumController extends Controller
 
             $explode = function($self) {
                 $array = explode('_', $self);
+
                 return [
                     'date' => $array[0],
                     'title' => $array[1],

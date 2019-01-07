@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/**
+ * Gallery
+ */
+Route::get('/gallery/photos', 'Gallery\PhotoController@show');
