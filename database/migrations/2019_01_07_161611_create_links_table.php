@@ -15,7 +15,7 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('url')->unique();
+            $table->text('url')->unique();
             $table->string('code')->unique();
             $table->timestamps();
         });

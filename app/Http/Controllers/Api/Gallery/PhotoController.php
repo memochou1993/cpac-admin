@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Gallery;
 
 use Cache;
 use Storage;
+use App\Helpers\Link;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -43,6 +44,7 @@ class PhotoController extends Controller
                         'web' => $params . '&size=web',
                         'raw' => $params . '&size=raw',
                         'download' => $params . '&size=raw&download=true',
+                        'share' => Link::shorten($params . '&size=raw'),
                     ],
                 ];
             };
