@@ -19,4 +19,13 @@ return [
         ],
     ],
 
+    'link' => [
+        'try' => [
+            'times' => 3
+        ],
+        'code' => [
+            'length' => 5,
+        ],
+    ],
+
 ];

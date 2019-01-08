@@ -19,3 +19,8 @@ Route::get('/', function () {
  * Gallery
  */
 Route::get('/gallery/photos', 'Gallery\PhotoController@show');
+
+/**
+ * Link
+ */
+Route::get('/links', 'LinkController@index');

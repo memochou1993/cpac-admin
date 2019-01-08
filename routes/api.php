@@ -33,3 +33,8 @@ Route::get('/gallery/photos', 'Gallery\PhotoController@index');
  * Cache
  */
 Route::get('/caches/destroy', 'CacheController@destroy');
+
+/**
+ * Link
+ */
+Route::get('/links', 'LinkController@index');
